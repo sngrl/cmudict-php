@@ -48,6 +48,7 @@ class CMUDict extends CMUDict_original {
         $phrase_phoneme = $this->getPhoneme($phrase);
         $result = strtr($phrase_phoneme, self::$arpabet);
         $result = strtr($result, array(' ' => '', ' ;; ' => ' '));
+        $result = trim($result);
         return $result;
     }
 
@@ -58,6 +59,7 @@ class CMUDict extends CMUDict_original {
         $phrase_phoneme = $this->getPhoneme($phrase);
         $result = strtr($phrase_phoneme, self::$arpabet_rus);
         $result = strtr($result, array(' ' => '', ' ;; ' => ' '));
+        $result = trim($result);
         return $result;
     }
 

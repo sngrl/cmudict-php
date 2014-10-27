@@ -1,6 +1,6 @@
 <?php
 
-$phrase = 'after twelve long years it should be awesome';
+$phrase = @$_GET['t'] ?: 'after twelve long years it should be awesome';
 
 header('Content-Type: text/html; charset=utf-8');
 require __DIR__ . '/classes/CMUDict.class.php';
