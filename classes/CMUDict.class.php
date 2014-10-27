@@ -33,7 +33,7 @@ class CMUDict extends CMUDict_original {
         $phrase = trim($phrase);
         $words = mb_strpos($phrase, ' ') ? explode(' ', $phrase) : (array)$phrase;
         foreach ($words as $word) {
-            $phonemes = $this->getPhonemes($word);
+            $phonemes = (array)$this->getPhonemes($word);
             #echo '<pre>' . print_r($phonemes, 1) . '</pre>';
             #$result[$word] = $phonemes;
             $result[$word] = implode(' ', $phonemes);
@@ -134,7 +134,7 @@ class CMUDict_original {
 
     function getPhonemes($word) {
         $uppercased_word = strtoupper($word);
-        $result = $this->values[$uppercased_word];
+        $result = @$this->values[$uppercased_word];
         if ($result !== null) {
             return $result;
         }
