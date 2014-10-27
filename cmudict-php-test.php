@@ -2,16 +2,17 @@
 
 $phrase = 'after twelve long years it should be awesome';
 
+header('Content-Type: text/html; charset=utf-8');
 require __DIR__ . '/classes/CMUDict.class.php';
 $cmu_dict = CMUDict::get();
 
-$result = array();
-$phrase = trim($phrase);
-$words = mb_strpos($phrase, ' ') ? explode(' ', $phrase) : (array)$phrase;
-foreach ($words as $word) {
-    $phonemes = $cmu_dict->getPhonemes($word);
-    $result[$word] = $phonemes;
-    echo '<pre>' . print_r($phonemes, 1) . '</pre>';
-}
+echo '<pre>' . $phrase . '</pre>';
 
-echo '<pre>' . print_r($result, 1) . '</pre>';
+$phrase_phoneme = $cmu_dict->getPhoneme($phrase);
+echo '<pre>' . print_r($phrase_phoneme, 1) . '</pre>';
+
+$phrase_transcription = $cmu_dict->getTranscription($phrase);
+echo '<pre>' . print_r($phrase_transcription, 1) . '</pre>';
+
+$phrase_rus_transcription = $cmu_dict->getRusTranscription($phrase);
+echo '<pre>' . print_r($phrase_rus_transcription, 1) . '</pre>';
